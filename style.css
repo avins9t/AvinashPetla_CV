@@ -28,7 +28,7 @@ body {
 }
 .navbar {
   position: fixed;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 1);
   color: var(--white-Color);
   width: 100%;
   height: var(--navBarHeight);  
@@ -206,15 +206,15 @@ nav {
 
 
 .section {
-  min-height: calc(100vh - var(--navBarHeight));
+  height: calc(100vh - var(--navBarHeight));
   /* border: 2px solid red; */
   scroll-snap-align: start;
   box-sizing: border-box;
-  background-image: radial-gradient(
+  /* background-image: radial-gradient(
     circle,
     var(--purple-Color),
     var(--purple-Color-dark)
-  );
+  ); */
 }
 
 .top {
@@ -267,118 +267,136 @@ nav {
   margin: 2rem 0;
 }
 .summary div p {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   text-align: justify;
   line-height: 1.5rem;
 }
+hr{
+  color:hsl(273, 98%, 49%);
+}
 .yrsOfExp {
   font-family: var(--font-family-mrDafoe);
+  color: var(--purple-Color);
   font-size: 5rem;
   align-self: flex-start;
   margin: 0;
   padding: 0 1rem;
 }
 
-.history {
-  /* background-color: var(--purple-Color); */
-  /* background-image: linear-gradient(
-    30deg,
-    var(--purple-Color),
-    var(--purple-Color-dark)
-  ); */
-  background-image: radial-gradient(
-    circle,
-    var(--purple-Color),
-    var(--purple-Color-dark)
-  );
+.journey {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 .years {
   display: flex;
-  flex-wrap: wrap;
-  height: 100%;
+  box-sizing: border-box;
+  flex-direction: row-reverse;  
+  height: 80%;
   width: 100%;
-  justify-content: center;
-  align-content: center;
-  text-align: center;
-  position: relative;
+  justify-content: space-evenly;  
+  position: relative;  
 }
 .yearsDetails {
-  box-sizing: border-box;  
-  text-align: center;    
-  flex-shrink: 1;
-  width: 20rem;
-  height: 23rem;
+  /* position: relative; */
+  width: 100%;
+  height: max-content;
+}
+.years--year{
+  position: relative;
+  background: var(--white-Color);
+  font-size: 2rem;
+  border: 0;
+  font-family: 'Raleway','sans-serif';
+  width: 100%;
+  cursor: pointer;
+  color: rgb(99, 97, 97);
+}
+.years--year::after, .years--year::before{
+  content: "";
   display: flex;
-  justify-content: space-evenly;
-  flex-direction: column;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  box-shadow: 0.5rem -0.5rem 1rem 0.5rem rgba(0, 0, 0, 0.7);
-  background-color: var(--white-Color); /*hsl(60, 27%, 96%);  */
-  user-select: none;
-  margin: 2rem;
-  position: relative;
-}
-
-.yearsDetails label {
   position: absolute;
+  top: 100%;  
+}
+.years--year::after {
+  background-color: rgb(99, 97, 97);
+  border-radius: 100%;  
+  width: 20px;
+  height: 20px;
+  left: calc(50% - 10px);
+}
+.years--year::before {
+  background-color: rgb(99, 97, 97);
   width: 100%;
-  height: 100%;
-  cursor: pointer;
-}
-.yearsDetails .years--year {
-  font-size: 3rem;
-  margin: 2rem;
-  width: min-content;
-  font-family: var(--font-family-mrDafoe);
-}
-.yearsDetails h2 {
-  font-size: 1rem;
-  margin: 2rem;
-}
-.yearsDetails ul {
-  display: none;
-}
-/* .yearsDetails:active {
-  position: fixed;
-  top: 50%;
-  bottom: 0;
-  left: 50%;
-  right: 0;
-  transform: translate(-50%, -50%);  
-  margin: 0;
-  width: 80%;
-  height: 80%;
-  background-image: linear-gradient(
-    75deg,
-    var(--black-overlay-Color),
-    rgb(58, 45, 45)
-  );
-  color: var(--white-Color);
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  align-items: center;
-  z-index: 10;
-}
-.yearsDetails:active ul {
-  display: block;
-  list-style: square;
-  text-align: left;
-  width: 60%;
-  font-size: 1.2rem;
-  line-height: 1.6rem;
+  height: 3px;
+  top: 120%;
 }
 
-.yearsDetails:active .years--year {
-  font-size: 1rem;
+.clientDetails {
+  margin: 2rem 0;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  left: calc(-1 * 50%);
 }
-.yearsDetails:active h2 {
-  width: 10rem;
-} */
+div.yearsDetails:last-of-type .clientDetails{
+  /* border: 2px solid red; */
+  left: calc(-1 * 30%);
+}
+
+.rolesAndResp {
+  opacity: 0;
+  position: absolute;
+  background-color: white;
+  border-radius: 10px;  
+  width: 70vw;
+  height: max-content;
+  left: 50vw;  
+  transform: translate(-50%,-50%);
+  padding: 2rem;
+  font-size: 1.2rem;
+  z-index: 10;
+  box-shadow: 2px 5px 2px 0 rgba(0, 0, 0, 0.1);
+  /* top: -50px; */
+  pointer-events: none;
+}
+
+.yearsDetails.active .years--year ~ .rolesAndResp {
+  opacity: 1;
+  /* top: 100px; */
+  transform: translate(-50%,0);
+  transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+  pointer-events: auto;
+}
+.yearsDetails.active .years--year {
+  border: 3px solid black;
+  border-bottom: none;
+  color: black;
+}
+.yearsDetails.active .years--year::after {
+  background-color: var(--purple-Color);
+}
+.yearsDetails.active .years--year::before {
+  background-color: black;
+}
+
+.bckgrndBanner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: max-content;
+  width: max-content;
+  transform: translate(-50%,-50%);
+  font-size: 15rem;
+  font-family: var(--font-family-mrDafoe);
+  text-align: center;
+  color: rgba(0, 0, 0, 0.05);
+}
 
 
 .skills {
