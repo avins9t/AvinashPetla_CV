@@ -9,8 +9,12 @@ body {
   --purple-Color: hsl(273, 98%, 49%);
   --purple-Color-dark: hsl(273, 63%, 25%);
   --black-overlay-Color: rgba(0, 0, 0, 0.95);
-
+  --yellow-bckgrnd-color: hsla(60, 78%, 42%, 0.5);
+  --yellow-bckgrnd-0T-color: rgb(220, 220, 133);
   --font-family-mrDafoe: "Mr Dafoe", cursive;
+
+  --boxShadow_Style1: -5px -5px 8px rgba(255, 255, 255,0.15),
+  5px 5px 8px rgba(0, 0, 0,0.2);
 
   font-family: "Maven Pro", sans-serif;
   overflow: hidden;
@@ -43,7 +47,8 @@ body {
 }
 .navbar .hiddenStickyNameOnHover{
   display: none;
-  font-family: var(--font-family-mrDafoe);
+  /* font-family: var(--font-family-mrDafoe); */
+  cursor: pointer;
 }
 nav {
   width: 50%;
@@ -140,14 +145,14 @@ nav {
   height: 75%;
   background: rgba(0, 0, 0, 0.9);
   display: block;
-  z-index: 4;  
+  z-index: 999;  
   transition: height 0.5s;
   display: flex;
   justify-content: space-evenly;
 }
 #hamburgerIconVisibility:checked+.container .hiddenStickyNameOnHover{
   display: block;
-  font-size: 5rem;
+  /* font-size: 5rem; */
 }
 #hamburgerIconVisibility:checked+.container .hiddenStickyName, #hamburgerIconVisibility:checked+.container .topCard{
   display: none;
@@ -181,61 +186,49 @@ nav {
 #hamburgerIconVisibility:checked+.container .navbar nav ul{
   flex-direction: column;  
 }
-/*.navbar:hover nav{
-  height: 75%;
-  width: 100%;
-}
-.navbar:hover ul{
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-}
-.navbar:hover a{
-  border: 0.2rem solid red;
-  width: 10rem;
-  height: 2rem;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  font-size: larger;
-} */
-
 
 .section {
   height: calc(100vh - var(--navBarHeight));
   /* border: 2px solid red; */
   scroll-snap-align: start;
   box-sizing: border-box;
-  /* background-image: radial-gradient(
-    circle,
-    var(--purple-Color),
-    var(--purple-Color-dark)
-  ); */
+  /* background-image: url("./pics/bckgrnd.png"); */
+  background-color: var(--yellow-bckgrnd-color); 
 }
 
 .top {
   display: flex;
-  align-items: center;
-  background-image: url("./pics/Avp.png");
-  background-repeat: no-repeat;
+  justify-content: space-evenly;
+  align-items: center;  
+  background-color: var(--yellow-bckgrnd-color);
+  /* background-repeat: no-repeat;
   background-size: cover;
-  background-position: center right;
+  background-position: center right; */
   height: 100vh;
 }
 .topCard {
   height: max-content;
   padding: 2rem;
   border-radius: 2rem;
-  box-shadow: -0.5rem -0.5rem 2rem black;
-  margin-left: 1.5rem;
+  box-shadow: var(--boxShadow_Style1);
+  /* margin-left: 10rem; */
+  background-color: var(--yellow-bckgrnd-0T-color);  
 }
 .top h1 {
   font-family: "Mr Dafoe", cursive;
   font-size: 5rem;
+}
+.topImage {
+  width: 20rem;
+  height: 20rem;
+  background-image: url("./pics/Avinash\ Petla.JPG");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  padding: 1rem;
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.5),
+  -5px -10px 10px rgba(255, 255, 255,0.5);
 }
 
 .hiddenStickyName {
@@ -254,8 +247,9 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;  
 }
-.summary div {
+.summary .summary-text {
   width: 75%;
   display: flex;
   flex-direction: column;
@@ -266,15 +260,17 @@ nav {
   width: 100%;
   margin: 2rem 0;
 }
-.summary div p {
+.summary .summary-text p {
   /* display: flex;
   justify-content: center;
   align-items: center; */
   text-align: justify;
-  line-height: 1.5rem;
+  line-height: 2.25rem;
+  font-size: 1.5rem;
 }
 hr{
-  color:hsl(273, 98%, 49%);
+  background-color:var(--purple-Color);
+  height: .05rem;
 }
 .yrsOfExp {
   font-family: var(--font-family-mrDafoe);
@@ -307,13 +303,15 @@ hr{
 }
 .years--year{
   position: relative;
-  background: var(--white-Color);
+  /* background: var(--white-Color);
+  background-color: hsla(60, 78%, 42%, 0.945); */
+  background: transparent;
   font-size: 2rem;
   border: 0;
   font-family: 'Raleway','sans-serif';
   width: 100%;
   cursor: pointer;
-  color: rgb(99, 97, 97);
+  color: rgb(136, 136, 136);  
 }
 .years--year::after, .years--year::before{
   content: "";
@@ -351,9 +349,10 @@ div.yearsDetails:last-of-type .clientDetails{
 
 .rolesAndResp {
   opacity: 0;
-  position: absolute;
-  background-color: white;
-  border-radius: 10px;  
+  position: absolute;  
+  background-color: rgba(37, 37, 37,0.8);
+  color: var(--yellow-bckgrnd-0T-color);
+  font-weight: bold;  
   width: 70vw;
   height: max-content;
   left: 50vw;  
@@ -361,22 +360,25 @@ div.yearsDetails:last-of-type .clientDetails{
   padding: 2rem;
   font-size: 1.2rem;
   z-index: 10;
-  box-shadow: 2px 5px 2px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 8px rgba(73, 70, 70, 0.8) ;
   /* top: -50px; */
   pointer-events: none;
+  outline: 10px solid rgba(37, 37, 37,1);
+  outline-offset: 1rem;
 }
 
 .yearsDetails.active .years--year ~ .rolesAndResp {
-  opacity: 1;
-  /* top: 100px; */
+  opacity: 1;  
   transform: translate(-50%,0);
   transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
   pointer-events: auto;
 }
 .yearsDetails.active .years--year {
-  border: 3px solid black;
+  /* border: 3px solid black; */
   border-bottom: none;
+  border-radius: 10px;
   color: black;
+  box-shadow: var(--boxShadow_Style1);
 }
 .yearsDetails.active .years--year::after {
   background-color: var(--purple-Color);
@@ -385,27 +387,43 @@ div.yearsDetails:last-of-type .clientDetails{
   background-color: black;
 }
 
-.bckgrndBanner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: max-content;
-  width: max-content;
-  transform: translate(-50%,-50%);
-  font-size: 15rem;
-  font-family: var(--font-family-mrDafoe);
+section.skills {
+  position: relative;  
+}
+.skill-list{
+  width: 100%;
+  height: 100%;  
+  display: grid;
+  grid-template-columns: repeat(3,20%);
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+.skill{
+  width: 10rem;
+  height: 10rem;
+  z-index: 10;
+}
+figcaption {
   text-align: center;
-  color: rgba(0, 0, 0, 0.05);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
 }
-
-
-.skills {
-  padding-bottom: 0;
+.skill img{
+  display: block;
+  height:10rem;  
+  width: 10rem;
+  object-fit: cover;
+  box-shadow: var(--boxShadow_Style1);
+  border-radius: 30%;
   overflow: hidden;
+  background-color: var(--yellow-bckgrnd-0T-color);
+  z-index: 10;
 }
-
-.skills .skills-skill {
-  border: 2px solid green;
+.skill img[alt="Selenium"]{
+  box-sizing: border-box;
+  padding: 1rem;
 }
 
 footer {

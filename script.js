@@ -13,3 +13,8 @@ document.addEventListener('click',e=>{
         dropdown.classList.remove("active");
     })
 })
+
+const avpIcon = document.querySelector(".hiddenStickyNameOnHover img");
+avpIcon.addEventListener("click",e=>{
+    window.open("./docs/AvinashPetla.pdf", '_blank');
+})
